@@ -16,9 +16,9 @@ li.sort()
 
 
 
-count = 0
+count = 1
 
-for j in range(N-1, -1, -1) :
+for j in range(N-2, -1, -1) :
 	if li[j][0] == score[0] and li[j][1] == score[1] and li[j][2] == score[2]:
 		print(count)
 		break
