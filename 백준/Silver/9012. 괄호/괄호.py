@@ -18,7 +18,7 @@ for i in range(N):
 			count -= 1
 
 		if count < 0:
-			count = -51
+			break
 
 	if count == 0:
 		print("YES")
