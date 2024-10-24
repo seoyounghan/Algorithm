@@ -1,17 +1,16 @@
 def solution(n, lost, reserve):
-    lost.sort()
-    reserve.sort()
-
-    lost_filtered = [i for i in lost if i not in reserve]
-    reserve_filtered = [j for j in reserve if j not in lost]
     
-    answer = n - len(lost_filtered)
+    lost_set = set(lost) - set(reserve)
+    reserve_set = set(reserve) - set(lost)
     
-    for i in lost_filtered:
-        for j in reserve_filtered: 
-            if j - 1 == i or j + 1 == i:  
-                answer += 1
-                reserve_filtered.remove(j)
-                break 
+    answer = n - len(lost_set)
+    
+    for i in sorted(lost_set): 
+        if i - 1 in reserve_set:  
+            answer += 1
+            reserve_set.remove(i - 1)
+        elif i + 1 in reserve_set:  
+            answer += 1
+            reserve_set.remove(i + 1)
 
     return answer
